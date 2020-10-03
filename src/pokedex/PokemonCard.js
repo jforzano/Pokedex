@@ -6,7 +6,7 @@ function PokemonCard(props) {
 
 
   return (
-    <li key={props.id}>
+    <li>
       <h2>{props.name}</h2>
       <div>ID#{props.id}</div>
       <div>Type: {props.type}</div>

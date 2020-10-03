@@ -1,25 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-class Searchbar extends React.Component {
+function Searchbar(props) {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchVal: ''
-    };
+  let [searchVal, setSearchVal] = useState([]);
+
+  function handleClick(e) {
+    e.preventDefault();
+    props.search(searchVal)
   }
-  render () {
-    return (
-      <>
-        <input 
-          type='text' 
-          value={this.state.searchVal}
-          onChange={(event) => this.setState({searchVal: event.target.value})} 
-        />
-        <button onClick={() => this.props.getPokemonInfo(this.state.searchVal)}>Find That Pokemon!</button>
-      </>
-    );
-  }
+
+  return(
+    <form>
+      <input 
+        type="text" 
+        placeholder="Search for a pokemon" 
+        value={searchVal}
+        onChange={(e) => setSearchVal(e.target.value)}
+      />
+      <button onClick={handleClick}>Search</button>
+    </form>
+  );
 }
 
-export default Searchbar;
+export default Searchbar

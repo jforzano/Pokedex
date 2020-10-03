@@ -8,6 +8,7 @@ const DATA_SOURCE = 'https://raw.githubusercontent.com/praxis-labs/external-inte
 function App() {
 
   let [pokeDataList, setPokeData] = useState([]);
+  let [displayList, setDisplayList] = useState([]);
 
   useEffect(() => {
     fetch(DATA_SOURCE)
@@ -24,8 +25,20 @@ function App() {
           };
         })
         setPokeData(result);
+        setDisplayList(result);
       });
   }, []);
+
+  function search(searchVal) {
+    if (!searchVal) setDisplayList(pokeDataList)
+    searchVal = searchVal.toLowerCase();
+
+    const fuzzyMatches = pokeDataList.filter( (pokemon) => {
+      return pokemon.name.toLowerCase().includes(searchVal);
+    });
+    
+    setDisplayList(fuzzyMatches);
+  }
 
 
   return (
@@ -34,11 +47,12 @@ function App() {
       <h1>Pokédex</h1> 
     </header>
 
+    <Searchbar search={search}/>
+
     <main role="main">
-      <p>This is my test paragraph.</p>
       <ul>
-        {pokeDataList.length > 0 && 
-          pokeDataList.map((data) => <PokemonCard {...data} />)
+        {displayList.length > 0 && 
+          displayList.map((data) => <PokemonCard key={data.id} {...data} />)
         }
       </ul>
     </main>
