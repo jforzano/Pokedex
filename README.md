@@ -1,3 +1,21 @@
+This is my submission for the Pokedex Builder Challenge requested by Praxis Labs. I spun this app up using the Create React App toolchain to get a developer environment ready as quickly as possible. There's quite a few dependencies as part of the package, so if this were going to production I'd run the eject script to customize the configuration a bit. 
+
+As of October 3rd, 2020, this submission is purely the javascript layer of the challenge. Any styling will be done, if required, on a subsequent submission. 
+
+In addition to styling, here are some other things I'd want to address with more time:
+
+- **Accessibility:** 
+Currently this app is fully navigable by keyboard, but other than that there is some accessibility cleanup to be done with better labeling for screenreaders
+
+- **Search/Filter Navigation Cleanup:**
+All of the search and filtering work as expected, though there's some UX love that could enhance how they interact with each other. Right now, for example, sorting and searching work independently on the whole set of pokemon (including additions and deletions), but cant be combined to sort on a searched subset. 
+
+- **Form Validation for Add New Pokemon:**
+Currently whatever the user types in goes. I would want to add some data validation and requirements to the form and render proper invalid notifications
+
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
