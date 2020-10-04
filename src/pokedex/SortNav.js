@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {SORT} from './constants.js'; 
 
 function SortNav(props) {

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import PokemonCard from './PokemonCard.js';
 import Searchbar from './Searchbar.js';
 import SortNav from './SortNav.js';
+import AddPokemonForm from './AddPokemonForm.js';
 import {SORT} from './constants.js'; 
 import './App.css';
 
@@ -10,8 +11,8 @@ const DATA_SOURCE = 'https://raw.githubusercontent.com/praxis-labs/external-inte
 function App() {
 
 
-  let [pokeDataList, setPokeData] = useState([]);
-  let [displayList, setDisplayList] = useState([]);
+  const [pokeDataList, setPokeData] = useState([]);
+  const [displayList, setDisplayList] = useState([]);
 
 
   useEffect(() => {
@@ -28,10 +29,15 @@ function App() {
             defense: data.base.Defense
           };
         })
-        setPokeData(result);
-        setDisplayList(result);
+        updateLists(result);
       });
   }, []);
+
+
+  function updateLists(list) {
+    setPokeData(list);
+    setDisplayList(list);
+  }
 
 
   function search(searchVal) {
@@ -71,6 +77,17 @@ function App() {
     setDisplayList(sortedList);
   }
 
+  function deletePokemon(id) {
+    const newList = pokeDataList.filter((pokemon) => pokemon.id !== id);
+    updateLists(newList);
+  }
+
+  function addPokemon(data) {
+    const newList = [...pokeDataList];
+    newList.unshift(data);
+    updateLists(newList);
+  }
+
 
   return (
     <>
@@ -80,11 +97,12 @@ function App() {
 
     <Searchbar search={search}/>
     <SortNav sortBy={sortBy}/>
+    <AddPokemonForm addPokemon={addPokemon}/>
 
     <main role="main">
       <ul>
         {displayList.length > 0 && 
-          displayList.map((data) => <PokemonCard key={data.id} {...data} />)
+          displayList.map((data) => <PokemonCard key={data.id+data.name} deletePokemon={deletePokemon} {...data} />)
         }
       </ul>
     </main>

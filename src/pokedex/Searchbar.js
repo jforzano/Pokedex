@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 function Searchbar(props) {
 
-  let [searchVal, setSearchVal] = useState([]);
+  const [searchVal, setSearchVal] = useState('');
 
   function handleClick(e) {
     e.preventDefault();
