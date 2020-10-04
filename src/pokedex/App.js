@@ -4,7 +4,7 @@ import Searchbar from './Searchbar.js';
 import SortNav from './SortNav.js';
 import AddPokemonForm from './AddPokemonForm.js';
 import {SORT} from './constants.js'; 
-import './App.css';
+// import './App.css';
 
 const DATA_SOURCE = 'https://raw.githubusercontent.com/praxis-labs/external-interview-prompts/main/pokedex-builder/pokedex.json';
 
