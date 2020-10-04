@@ -1,6 +1,6 @@
 This is my submission for the Pokedex Builder Challenge requested by Praxis Labs. I spun this app up using the Create React App toolchain to get a developer environment ready as quickly as possible. There's quite a few dependencies as part of the package, so if this were going to production I'd run the eject script to customize the configuration a bit. 
 
-As of October 3rd, 2020, this submission is purely the javascript layer of the challenge. Any styling will be done, if required, on a subsequent submission. 
+As of October 3rd, 2020, this submission is purely the javascript layer of the challenge. Any styling will be done, if required, on a subsequent submission. You can find all of my work in the pokdex directory here: https://github.com/jforzano/Pokedex/tree/main/src/pokedex 
 
 In addition to styling, here are some other things I'd want to address with more time:
 
